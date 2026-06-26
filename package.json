@@ -1,12 +1,10 @@
 {
-  "name": "mia-app-ai",
+  "name": "analisi-organizzazione-base",
   "version": "1.0.0",
+  "type": "module",
   "main": "server.js",
-  "scripts": {
-    "start": "node server.js"
-  },
   "dependencies": {
     "express": "^4.18.2",
-    "@google/generative-ai": "^0.1.3"
+    "@google/generative-ai": "^0.1.0"
   }
 }
