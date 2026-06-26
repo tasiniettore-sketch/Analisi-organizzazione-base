@@ -18,9 +18,11 @@ app.get('/', (req, res) => {
   res.send('Il Postino di Gemini è online e pronto!');
 });
 app.post('/chiedi', async (req, res) => {
-  const model = genAI.getGenerativeModel({ model: "gemini-1.5-flash" });
-  const result = await model.generateContent(req.body.domanda);
-  res.json({ risposta: result.response.text() });
+  // Nel file server.js, modifica la parte del modello così:
+const model = genAI.getGenerativeModel({ 
+  model: "gemini-1.5-flash",
+  systemInstruction: "TU SEI UN ESPERTO DI ANALISI ORGANIZZATIVA. ANALIZZA..." // Qui incolla le istruzioni che avevi in AI Studio
+});
 });
 
 const port = process.env.PORT || 3000;
