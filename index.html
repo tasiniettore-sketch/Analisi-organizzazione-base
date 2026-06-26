@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<body>
+  <h1>La mia App AI</h1>
+  <input type="text" id="domanda" placeholder="Scrivi qui...">
+  <button onclick="chiediAI()">Invia</button>
+  <p id="risposta"></p>
+
+  <script>
+    async function chiediAI() {
+      const domanda = document.getElementById('domanda').value;
+      const rispostaP = document.getElementById('risposta');
+      rispostaP.innerText = "Pensando...";
+      
+      const res = await fetch('https://analisi-organizzazione-base.onrender.com/chiedi', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ domanda: domanda })
+      });
+      const data = await res.json();
+      rispostaP.innerText = data.risposta;
+    }
+  </script>
+</body>
+</html>
