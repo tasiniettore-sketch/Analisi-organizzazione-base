@@ -13,6 +13,10 @@ app.use(express.json());
 
 const genAI = new GoogleGenerativeAI(process.env.GEMINI_API_KEY);
 
+// Aggiungiamo questa riga per la pagina principale
+app.get('/', (req, res) => {
+  res.send('Il Postino di Gemini è online e pronto!');
+});
 app.post('/chiedi', async (req, res) => {
   const model = genAI.getGenerativeModel({ model: "gemini-1.5-flash" });
   const result = await model.generateContent(req.body.domanda);
