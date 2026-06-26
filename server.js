@@ -1,7 +1,14 @@
 const express = require('express');
 const { GoogleGenerativeAI } = require("@google/generative-ai");
-
 const app = express();
+
+// Aggiungiamo questa riga per permettere al sito di parlare con il server
+app.use((req, res, next) => {
+  res.header("Access-Control-Allow-Origin", "*");
+  res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+  next();
+});
+
 app.use(express.json());
 
 const genAI = new GoogleGenerativeAI(process.env.GEMINI_API_KEY);
